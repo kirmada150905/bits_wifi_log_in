@@ -10,6 +10,8 @@ import (
 	"time"
 )
 
+
+//regex matching
 func extractMagic(htmlContent string) string {
 	re := regexp.MustCompile(`<input[^>]*name=["']magic["'][^>]*value=["']([^"']+)["']`)
 	matches := re.FindStringSubmatch(htmlContent)
@@ -53,11 +55,11 @@ func main() {
 		if err == nil {
 			break
 		}
-		fmt.Println("Connection failed, retrying...")
+		fmt.Println("Connection failed, retrying in 3 seconds...")
 		time.Sleep(3 * time.Second)
 	}
 	if err != nil {
-		fmt.Println("Failed to connect after retries.")
+		fmt.Println("Failed to connect even after 5 retries.")
 		return
 	}
 	defer resp.Body.Close()
@@ -95,12 +97,12 @@ func main() {
 		if err == nil {
 			break
 		}
-		fmt.Println("Error posting data, retrying...")
+		fmt.Println("Error posting data, retying...")
 		time.Sleep(3 * time.Second)
 	}
 
 	if respPost == nil {
-		fmt.Println("Failed to post data after retries.")
+		fmt.Println("Failed to post data after 5 retries.")
 		return
 	}
 	defer respPost.Body.Close()
