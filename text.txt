@@ -1,4 +1,0 @@
-curl -X POST \
--H "Content-Type: application/x-www-form-urlencoded" \
--d "username=F20240732&password=F20295779%23&magic=45c30cd1d4dd7c1b&4Tredir=http://detectportal.brave-http-only.com/" \
-"https://fw.bits-pilani.ac.in:8090/"
